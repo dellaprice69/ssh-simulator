@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH Login Practice Simulator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="login-container">
+                <div class="login-header">
+                    <h1>🔐 SSH Login Practice</h1>
+                    <p>Learn SSH authentication and Linux commands</p>
+                </div>
+                
+                <div class="login-tabs">
+                    <button class="tab-btn active" data-tab="password">Password Auth</button>
+                    <button class="tab-btn" data-tab="info">About</button>
+                </div>
+                
+                <!-- Password Login Tab -->
+                <div id="password-tab" class="tab-content active">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" placeholder="admin, user, or guest" value="user" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Enter password" value="password123" required>
+                        </div>
+                        <button type="submit" class="login-btn">Login with Password</button>
+                        <div id="login-error" class="error-message"></div>
+                    </form>
+                </div>
+                
+                <!-- About Tab -->
+                <div id="info-tab" class="tab-content">
+                    <div class="about-info">
+                        <h3>🎓 Test Users Available:</h3>
+                        <table class="users-table">
+                            <tr>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Sudo</th>
+                            </tr>
+                            <tr>
+                                <td><strong>admin</strong></td>
+                                <td>admin123</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>user</strong></td>
+                                <td>password123</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td><strong>guest</strong></td>
+                                <td>guest123</td>
+                                <td>✗</td>
+                            </tr>
+                        </table>
+                        <h3>✨ Features:</h3>
+                        <ul>
+                            <li>✓ Full virtual Linux environment</li>
+                            <li>✓ 20+ Linux commands</li>
+                            <li>✓ Password authentication</li>
+                            <li>✓ User & permission system</li>
+                            <li>✓ Command history</li>
+                            <li>✓ Sudo support for admin</li>
+                            <li>✓ No external dependencies!</li>
+                        </ul>
+                        <h3>📚 Available Commands:</h3>
+                        <code>pwd cd ls cat echo mkdir touch rm cp mv uname date id sudo ps df du ssh-keygen history clear help</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Terminal Screen -->
+        <div id="terminal-screen" class="screen">
+            <div class="terminal-header">
+                <div class="terminal-title">SSH Session - <span id="term-username"></span>@ssh-simulator</div>
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </div>
+            
+            <div class="terminal-container">
+                <div id="terminal" class="terminal">
+                    <div class="terminal-welcome">
+                        Welcome to SSH Practice Simulator!
+                        <div>Type <strong>help</strong> for available commands</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terminal-input-line">
+                <span class="prompt"><span id="prompt-user">user</span>@ssh-simulator:<span id="prompt-dir">~</span>$ </span>
+                <input type="text" id="command-input" class="command-input" placeholder="Enter command..." autocomplete="off">
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/client.js"></script>
+</body>
+</html>
